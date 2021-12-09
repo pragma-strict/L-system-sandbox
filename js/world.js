@@ -44,7 +44,7 @@ class World{
          line(0, i, width, i);
       }
       
-      this.drawCenterLines(this.origin);
+      //this.drawCenterLines(this.origin);
    }
 
 

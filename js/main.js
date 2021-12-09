@@ -4,9 +4,11 @@
 
 // DOM Ids and elements
 let ID_PARENT = 'p5-canvas-container';
+let ID_INTERFACE_OUTPUT = 'interface-output';
 let INTERFACE_DATA;
 
 let canvas;
+let lsys;
 
 let inputRaw = [];
 
@@ -15,6 +17,9 @@ function setup() {
   INTERFACE_DATA = document.getElementById('interface-data');
   initializeP5Canvas();
   world = new World();
+  lsys = new LSystem();
+  lsys.setOutputElement(document.getElementById(ID_INTERFACE_OUTPUT));
+  lsys.outputSentence();
 }
 
 
@@ -34,6 +39,7 @@ function updateCanvasSize(){
 function draw(){
   background(BG_COL);
   world.drawGrid();
+  lsys.render();
 }
 
 
@@ -91,4 +97,9 @@ function mouseDragged(){
 
 function windowResized() {
   updateCanvasSize();
+}
+
+
+function keyPressed(){
+  lsys.keyPressed(key);
 }
